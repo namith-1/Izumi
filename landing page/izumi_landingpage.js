@@ -11,7 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
             authButtons.classList.toggle('active');
         });
     }
-    
+    function showOverlay() {
+        document.getElementById("overlay").style.display = "flex";
+    }
+
+    function hideOverlay() {
+        document.getElementById("overlay").style.display = "none";
+    }
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     
