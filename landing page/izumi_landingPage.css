@@ -834,3 +834,14 @@ img {
     transform: perspective(1000px) rotateY(-15deg);
     transition: var(--transition);
 }
+.footer-links{
+    display: flex;
+    justify-content: space-between;
+}
+.social-icons a i{
+    height: 30px;
+    width: 30px;
+}
+.contact-us{
+    font-weight:bolder; 
+}
