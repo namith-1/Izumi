@@ -4,137 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-
-        body {
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .form-container {
-            width: 100%;
-            max-width: 500px;
-            background-color: white;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 0 0 1px #0099ff;
-        }
-
-        .form-title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-
-        .form-subtitle {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .form-input::placeholder {
-            color: #999;
-        }
-
-        .form-checkbox {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .checkbox-input {
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .checkbox-label {
-            font-size: 16px;
-            color: #333;
-        }
-
-        .submit-button {
-            width: 100%;
-            padding: 15px;
-            background-color: #0026ff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .submit-button:hover {
-            background-color: #0022e6;
-        }
-
-        .signup-text {
-            text-align: center;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .signup-link {
-            color: #333;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .signup-link:hover {
-            text-decoration: underline;
-        }
-
-        .error-message {
-            color: #ff3333;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        .form-input.error {
-            border-color: #ff3333;
-        }
-
-        .forgot-password {
-            text-align: right;
-            margin-bottom: 20px;
-        }
-
-        .forgot-password a {
-            color: #0026ff;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .forgot-password a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="./signup.css">
+       
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+               <a href="./izumi_landingPage.html"> <h1 style="color: #9d46ff;">Izumi</h1> </a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
     <div class="form-container">
         <h1 class="form-title">Login</h1>
         <h2 class="form-subtitle">to your account</h2>
@@ -163,102 +47,6 @@
         </form>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.querySelector('form');
-            const emailInput = document.querySelector('input[type="email"]');
-            const passwordInput = document.querySelector('input[type="password"]');
-
-            // Create error message element
-            function createErrorElement(message) {
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error-message';
-                errorDiv.textContent = message;
-                return errorDiv;
-            }
-
-            // Clear previous error messages
-            function clearErrors() {
-                const errorMessages = document.querySelectorAll('.error-message');
-                errorMessages.forEach(error => error.remove());
-                
-                // Remove error class from inputs
-                const inputs = document.querySelectorAll('.form-input');
-                inputs.forEach(input => input.classList.remove('error'));
-            }
-
-            // Validate email
-            function validateEmail() {
-                const email = emailInput.value.trim();
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                
-                if (email === '') {
-                    emailInput.classList.add('error');
-                    const error = createErrorElement('Email address is required');
-                    emailInput.parentNode.appendChild(error);
-                    return false;
-                } else if (!emailRegex.test(email)) {
-                    emailInput.classList.add('error');
-                    const error = createErrorElement('Please enter a valid email address');
-                    emailInput.parentNode.appendChild(error);
-                    return false;
-                }
-                return true;
-            }
-
-            // Validate password
-            function validatePassword() {
-                const password = passwordInput.value;
-                
-                if (password === '') {
-                    passwordInput.classList.add('error');
-                    const error = createErrorElement('Password is required');
-                    passwordInput.parentNode.appendChild(error);
-                    return false;
-                } else if (password.length < 6) {
-                    passwordInput.classList.add('error');
-                    const error = createErrorElement('Password must be at least 6 characters');
-                    passwordInput.parentNode.appendChild(error);
-                    return false;
-                }
-                
-                return true;
-            }
-
-            // Add input event listeners for real-time validation
-            emailInput.addEventListener('blur', function() {
-                clearErrors();
-                validateEmail();
-            });
-
-            passwordInput.addEventListener('blur', function() {
-                clearErrors();
-                validatePassword();
-            });
-
-            // Form submission handler
-            form.addEventListener('submit', function(event) {
-                // Clear any existing error messages
-                clearErrors();
-                
-                // Run all validations
-                const isEmailValid = validateEmail();
-                const isPasswordValid = validatePassword();
-                
-                // If any validation fails, prevent form submission
-                if (!(isEmailValid && isPasswordValid)) {
-                    event.preventDefault();
-                } else {
-                    // If all validations pass, you could add code here to:
-                    // - Submit login credentials
-                    // - Handle authentication
-                    console.log("Login form submitted successfully!");
-                    
-                    // For demo purposes, you might want to prevent the actual submission:
-                    // event.preventDefault();
-                }
-            });
-        });
-    </script>
+    <script src="./login.js"> </script>
 </body>
 </html>
