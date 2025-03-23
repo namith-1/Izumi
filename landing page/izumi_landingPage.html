@@ -1,0 +1,534 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izumi - Expanding Knowledge Horizons</title>
+    <link rel="stylesheet" href="izumi_landingPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>izumi</h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#magazines">Magazines</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-login">Log In</button>
+                <button class="btn btn-signup">Sign Up</button>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Expand Your Knowledge Horizons</h1>
+                <p>Access premium courses, interactive discussions, and curated magazines on Izumi's learning platform.</p>
+                <div class="search-box">
+                    <input type="text" placeholder="What do you want to learn today?">
+                    <button class="btn btn-search" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                                    </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Explore Courses</button>
+                    <button class="btn btn-secondary">Browse Magazines</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-3d-element"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Courses Section -->
+    <section id="courses" class="featured-courses">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Courses</h2>
+                <p>Learn from industry experts and enhance your skills</p>
+            </div>
+            <div class="course-cards">
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-info">
+                        <span class="tag">Best Seller</span>
+                        <h3>Advanced Web Development</h3>
+                        <p class="instructor">By Sarah Williams</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.8 (2,453 reviews)</span>
+                        </div>
+                        <div class="course-features">
+                            <span><i class="fas fa-video"></i> 42 lessons</span>
+                            <span><i class="fas fa-clock"></i> 38 hours</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="price">$49.99</span>
+                            <button class="btn btn-sm">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-info">
+                        <span class="tag">New</span>
+                        <h3>Data Science Fundamentals</h3>
+                        <p class="instructor">By Michael Chen</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0 (1,287 reviews)</span>
+                        </div>
+                        <div class="course-features">
+                            <span><i class="fas fa-video"></i> 56 lessons</span>
+                            <span><i class="fas fa-clock"></i> 45 hours</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="price">$59.99</span>
+                            <button class="btn btn-sm">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-info">
+                        <span class="tag">Popular</span>
+                        <h3>Digital Marketing Masterclass</h3>
+                        <p class="instructor">By Emma Rodriguez</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.0 (3,512 reviews)</span>
+                        </div>
+                        <div class="course-features">
+                            <span><i class="fas fa-video"></i> 38 lessons</span>
+                            <span><i class="fas fa-clock"></i> 32 hours</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="price">$44.99</span>
+                            <button class="btn btn-sm">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more-container">
+                <button class="btn btn-outline">View All Courses</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discussion & QnA Section -->
+    <section class="discussions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Learning Community</h2>
+                <p>Engage with peers in discussions and get your questions answered</p>
+            </div>
+            <div class="discussion-container">
+                <div class="discussion-card">
+                    <div class="discussion-header">
+                        <h3>Discussion Forums</h3>
+                        <span class="tag">New</span>
+                    </div>
+                    <div class="discussion-content">
+                        <ul class="discussion-list">
+                            <li>
+                                <i class="fas fa-comments"></i>
+                                <div class="discussion-info">
+                                    <h4>Best practices for responsive design</h4>
+                                    <p>Started by Alex J. • 42 replies • 2 hours ago</p>
+                                </div>
+                                <span class="active-icon"></span>
+                            </li>
+                            <li>
+                                <i class="fas fa-comments"></i>
+                                <div class="discussion-info">
+                                    <h4>Python vs JavaScript for beginners</h4>
+                                    <p>Started by Rachel T. • 89 replies • 1 day ago</p>
+                                </div>
+                                <span class="active-icon"></span>
+                            </li>
+                            <li>
+                                <i class="fas fa-comments"></i>
+                                <div class="discussion-info">
+                                    <h4>Career paths in machine learning</h4>
+                                    <p>Started by David K. • 56 replies • 3 days ago</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="discussion-footer">
+                        <button class="btn btn-primary">Join Discussions</button>
+                    </div>
+                </div>
+
+                <div class="discussion-card">
+                    <div class="discussion-header">
+                        <h3>Q&A Sessions</h3>
+                        <span class="tag">Live</span>
+                    </div>
+                    <div class="discussion-content">
+                        <ul class="qna-list">
+                            <li>
+                                <i class="fas fa-question-circle"></i>
+                                <div class="qna-info">
+                                    <h4>Advanced SQL Techniques</h4>
+                                    <p>Expert: Maria L. • Today at 3:00 PM</p>
+                                </div>
+                                <button class="btn btn-sm btn-primary">Join</button>
+                            </li>
+                            <li>
+                                <i class="fas fa-question-circle"></i>
+                                <div class="qna-info">
+                                    <h4>UI/UX Design Principles</h4>
+                                    <p>Expert: Jason H. • Tomorrow at 1:00 PM</p>
+                                </div>
+                                <button class="btn btn-sm btn-outline">Remind</button>
+                            </li>
+                            <li>
+                                <i class="fas fa-question-circle"></i>
+                                <div class="qna-info">
+                                    <h4>Cloud Architecture Fundamentals</h4>
+                                    <p>Expert: Priya M. • Mar 19 at 11:00 AM</p>
+                                </div>
+                                <button class="btn btn-sm btn-outline">Remind</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="discussion-footer">
+                        <button class="btn btn-primary">View All Sessions</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Magazines Section -->
+    <section id="magazines" class="magazines">
+        <div class="container">
+            <div class="section-header">
+                <h2>Curated Magazines</h2>
+                <p>Discover trending topics and in-depth articles</p>
+            </div>
+            <div class="magazine-cards">
+                <div class="magazine-card">
+                    <div class="magazine-image"></div>
+                    <div class="magazine-content">
+                        <span class="tag">Tech</span>
+                        <h3>The Future of AI in Education</h3>
+                        <p>Exploring how artificial intelligence is revolutionizing learning experiences across the globe.</p>
+                        <div class="magazine-meta">
+                            <span><i class="fas fa-clock"></i> 15 min read</span>
+                            <span><i class="fas fa-calendar"></i> Mar 10, 2025</span>
+                        </div>
+                        <button class="btn btn-outline">Read Now</button>
+                    </div>
+                </div>
+                <div class="magazine-card">
+                    <div class="magazine-image"></div>
+                    <div class="magazine-content">
+                        <span class="tag">Business</span>
+                        <h3>Remote Work Revolution</h3>
+                        <p>How companies are adapting to the new normal and building successful distributed teams.</p>
+                        <div class="magazine-meta">
+                            <span><i class="fas fa-clock"></i> 12 min read</span>
+                            <span><i class="fas fa-calendar"></i> Mar 8, 2025</span>
+                        </div>
+                        <button class="btn btn-outline">Read Now</button>
+                    </div>
+                </div>
+                <div class="magazine-card">
+                    <div class="magazine-image"></div>
+                    <div class="magazine-content">
+                        <span class="tag">Design</span>
+                        <h3>Minimalism in Digital Spaces</h3>
+                        <p>The growing trend of clean, focused design and its impact on user experience.</p>
+                        <div class="magazine-meta">
+                            <span><i class="fas fa-clock"></i> 10 min read</span>
+                            <span><i class="fas fa-calendar"></i> Mar 5, 2025</span>
+                        </div>
+                        <button class="btn btn-outline">Read Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more-container">
+                <button class="btn btn-outline">Browse All Magazines</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Izumi?</h2>
+                <p>Experience the difference with our unique learning platform</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Expert-Led Courses</h3>
+                    <p>Learn from industry professionals with real-world experience and proven expertise.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Active Community</h3>
+                    <p>Join discussions, collaborate on projects, and network with like-minded learners.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Recognized Certificates</h3>
+                    <p>Earn certificates that are valued by employers and enhance your credentials.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Learn Anywhere</h3>
+                    <p>Access content on any device with our responsive platform and mobile app.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Members Say</h2>
+                <p>Success stories from the Izumi community</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card active">
+                    <div class="testimonial-image"></div>
+                    <div class="testimonial-content">
+                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                        <p>"Izumi transformed my career. I went from knowing basic programming to landing a job as a full-stack developer in just 6 months. The community support and expert guidance made all the difference."</p>
+                        <div class="testimonial-author">
+                            <h4>Daniel Thompson</h4>
+                            <p>Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-controls">
+                    <button class="testimonial-nav prev" aria-label="Previous Testimonial">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="testimonial-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="testimonial-nav next" aria-label="Next Testimonial">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Begin Your Learning Journey?</h2>
+            <p>Join thousands of learners and unlock your potential with Izumi today.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary">Sign Up For Free</button>
+                <button class="btn btn-outline">Explore Courses</button>
+            </div>
+        </div>
+        <div class="cta-image">
+            <div class="cta-3d-element"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>izumi</h2>
+                <p>Expanding Knowledge Horizons</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Learn</h3>
+                    <ul>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Magazines</a></li>
+                        <li><a href="#">Workshops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="#">Forums</a></li>
+                        <li><a href="#">Q&A Sessions</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Copyright</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Izumi Learning Platform. All rights reserved.</p>
+            <div class="app-buttons">
+                <a href="#" class="app-button"><i class="fab fa-apple"></i> App Store</a>
+                <a href="#" class="app-button"><i class="fab fa-google-play"></i> Google Play</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Login Modal -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>Log In to Izumi</h2>
+            <p>Welcome back! Please enter your credentials to continue.</p>
+        </div>
+        <div class="modal-body">
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                <div class="form-group remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+            </form>
+            <div class="auth-divider">
+                <span>Or continue with</span>
+            </div>
+            <div class="social-login">
+                <button class="btn btn-social btn-google"><i class="fab fa-google"></i> Google</button>
+                <button class="btn btn-social btn-facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+            </div>
+            <div class="auth-switch">
+                <p>Don't have an account? <a href="#" class="show-signup">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Signup Modal -->
+<div class="modal" id="signupModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>Create Your Izumi Account</h2>
+            <p>Join our learning community and start your journey today!</p>
+        </div>
+        <div class="modal-body">
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" placeholder="Create a password" required>
+                    <p class="password-hint">Must be at least 8 characters with letters, numbers, and symbols</p>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-group terms-checkbox">
+                    <input type="checkbox" id="termsAgree" required>
+                    <label for="termsAgree">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            </form>
+            <div class="auth-divider">
+                <span>Or sign up with</span>
+            </div>
+            <div class="social-login">
+                <button class="btn btn-social btn-google"><i class="fab fa-google"></i> Google</button>
+                <button class="btn btn-social btn-facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+            </div>
+            <div class="auth-switch">
+                <p>Already have an account? <a href="#" class="show-login">Log In</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="izumi_landingpage.js"></script>
+</body>
+</html>

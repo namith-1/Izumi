@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izumi Learning Platform - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="studentdashboard.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="logo-shape"></div>
+                    <span>izumi</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="overview">
+                    <i class="fas fa-home"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="#" class="nav-item" data-section="my-courses">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>My Courses</span>
+                </a>
+                <a href="#" class="nav-item" data-section="magazines">
+                    <i class="fas fa-book-open"></i>
+                    <span>Magazines</span>
+                </a>
+                <a href="#" class="nav-item" data-section="qa-forum">
+                    <i class="fas fa-comments"></i>
+                    <span>Q&A Forum</span>
+                </a>
+                <a href="#" class="nav-item" data-section="calendar">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendar</span>
+                </a>
+                <a href="#" class="nav-item" data-section="achievements">
+                    <i class="fas fa-medal"></i>
+                    <span>Achievements</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="login.html" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1 class="main-title">Dashboard</h1>
+                    <p class="welcome-message">Welcome back, Alex!</p>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for courses, topics, or questions...">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="notifications">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-indicator"></span>
+                        </button>
+                    </div>
+                    
+                    <div class="user-profile">
+                        <div class="user-avatar">A</div>
+                        <div class="user-info">
+                            <p class="user-name">Alex Johnson</p>
+                            <p class="user-role">Student</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <div class="overview-header">
+                    <h2>Your Learning Overview</h2>
+                    <div class="filters">
+                        <select name="timeframe" id="timeframe">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <h3>Course Progress</h3>
+                            <div class="stat-icon primary">
+                                <i class="fas fa-book"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-body">
+                            <div class="stat">75%</div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                            <p class="stat-description">Overall completion rate</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <h3>Learning Streak</h3>
+                            <div class="stat-icon warning">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-body">
+                            <div class="stat">12 <span>days</span></div>
+                            <div class="streak-calendar">
+                                <div class="streak-day active"></div>
+                                <div class="streak-day active"></div>
+                                <div class="streak-day active"></div>
+                                <div class="streak-day active"></div>
+                                <div class="streak-day active"></div>
+                                <div class="streak-day"></div>
+                                <div class="streak-day"></div>
+                            </div>
+                            <p class="stat-description">Keep it up!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <h3>Forum Activity</h3>
+                            <div class="stat-icon success">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-body">
+                            <div class="stat">18 <span>answers</span></div>
+                            <div class="activity-graph">
+                                <div class="bar" style="height: 30%"></div>
+                                <div class="bar" style="height: 50%"></div>
+                                <div class="bar" style="height: 70%"></div>
+                                <div class="bar" style="height: 40%"></div>
+                                <div class="bar" style="height: 90%"></div>
+                                <div class="bar" style="height: 60%"></div>
+                                <div class="bar active" style="height: 80%"></div>
+                            </div>
+                            <p class="stat-description">You've helped 42 students</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <h3>Achievements</h3>
+                            <div class="stat-icon accent">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-body">
+                            <div class="stat">7 <span>badges</span></div>
+                            <div class="badges-preview">
+                                <div class="badge" title="Course Completer">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="badge" title="Problem Solver">
+                                    <i class="fas fa-puzzle-piece"></i>
+                                </div>
+                                <div class="badge" title="Helpful Peer">
+                                    <i class="fas fa-hands-helping"></i>
+                                </div>
+                                <div class="badge more" title="View All">
+                                    <span>+4</span>
+                                </div>
+                            </div>
+                            <p class="stat-description">2 new badges this month</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="current-courses">
+                    <div class="section-header">
+                        <h2>Continue Learning</h2>
+                        <a href="#" class="view-all">View All Courses</a>
+                    </div>
+                    
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <div class="course-image" style="background-color: #5d35c9;">
+                                <div class="course-progress-indicator" style="width: 65%"></div>
+                                <div class="course-image-overlay">
+                                    <i class="fas fa-code course-icon"></i>
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-badge">In Progress</div>
+                                <h3 class="course-title">Advanced JavaScript Patterns</h3>
+                                <div class="course-meta">
+                                    <div class="course-instructor">
+                                        <div class="instructor-avatar"></div>
+                                        <span>Dr. Julia Chen</span>
+                                    </div>
+                                    <div class="course-stats">
+                                        <div class="course-stat">
+                                            <i class="fas fa-clock"></i>
+                                            <span>4h remaining</span>
+                                        </div>
+                                        <div class="course-stat">
+                                            <i class="fas fa-layer-group"></i>
+                                            <span>12/18 lessons</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="course-footer">
+                                    <div class="progress-text">65% complete</div>
+                                    <a href="#" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <div class="course-image" style="background-color: #02c39a;">
+                                <div class="course-progress-indicator" style="width: 30%"></div>
+                                <div class="course-image-overlay">
+                                    <i class="fas fa-database course-icon"></i>
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-badge">In Progress</div>
+                                <h3 class="course-title">Data Science Fundamentals</h3>
+                                <div class="course-meta">
+                                    <div class="course-instructor">
+                                        <div class="instructor-avatar"></div>
+                                        <span>Prof. Michael Lee</span>
+                                    </div>
+                                    <div class="course-stats">
+                                        <div class="course-stat">
+                                            <i class="fas fa-clock"></i>
+                                            <span>8h remaining</span>
+                                        </div>
+                                        <div class="course-stat">
+                                            <i class="fas fa-layer-group"></i>
+                                            <span>6/20 lessons</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="course-footer">
+                                    <div class="progress-text">30% complete</div>
+                                    <a href="#" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <div class="course-image" style="background-color: #ed8936;">
+                                <div class="course-progress-indicator" style="width: 90%"></div>
+                                <div class="course-image-overlay">
+                                    <i class="fas fa-paint-brush course-icon"></i>
+                                </div>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-badge">Almost Done</div>
+                                <h3 class="course-title">UI/UX Design Principles</h3>
+                                <div class="course-meta">
+                                    <div class="course-instructor">
+                                        <div class="instructor-avatar"></div>
+                                        <span>Sarah Williams</span>
+                                    </div>
+                                    <div class="course-stats">
+                                        <div class="course-stat">
+                                            <i class="fas fa-clock"></i>
+                                            <span>1h remaining</span>
+                                        </div>
+                                        <div class="course-stat">
+                                            <i class="fas fa-layer-group"></i>
+                                            <span>14/15 lessons</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="course-footer">
+                                    <div class="progress-text">90% complete</div>
+                                    <a href="#" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    
+                    <div class="activity-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon forum">
+                                <i class="fas fa-comment-alt"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>You answered a question in Advanced JavaScript forum</h4>
+                                <p>"How do closures work in JavaScript? Here's my explanation..."</p>
+                                <div class="activity-meta">
+                                    <span class="time">2 hours ago</span>
+                                    <span class="likes">5 likes</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon course">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Completed lesson: "Introduction to Neural Networks"</h4>
+                                <p>Data Science Fundamentals - Module 3, Lesson 4</p>
+                                <div class="activity-meta">
+                                    <span class="time">Yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon achievement">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Earned badge: "Problem Solver"</h4>
+                                <p>For answering 10 questions marked as "Solved" in the forum</p>
+                                <div class="activity-meta">
+                                    <span class="time">2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Other content sections will be shown/hidden via JavaScript -->
+            <section id="my-courses" class="content-section">
+                <h2>My Courses</h2>
+                <p>Your courses content will appear here.</p>
+            </section>
+            
+            <section id="magazines" class="content-section">
+                <h2>Course Magazines</h2>
+                <p>Your curated magazines will appear here.</p>
+            </section>
+            
+            <section id="qa-forum" class="content-section">
+                <h2>Q&A Forum</h2>
+                <p>Forum discussions will appear here.</p>
+            </section>
+            
+            <section id="calendar" class="content-section">
+                <h2>Calendar</h2>
+                <p>Your learning schedule will appear here.</p>
+            </section>
+            
+            <section id="achievements" class="content-section">
+                <h2>Achievements</h2>
+                <p>Your badges and achievements will appear here.</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="studentdashboard.js"></script>
+</body>
+</html>
