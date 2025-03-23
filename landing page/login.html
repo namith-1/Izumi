@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup Form</title>
+    <title>Login Form</title>
     <style>
         * {
             box-sizing: border-box;
@@ -92,19 +92,19 @@
             background-color: #0022e6;
         }
 
-        .login-text {
+        .signup-text {
             text-align: center;
             font-size: 16px;
             color: #333;
         }
 
-        .login-link {
+        .signup-link {
             color: #333;
             font-weight: bold;
             text-decoration: none;
         }
 
-        .login-link:hover {
+        .signup-link:hover {
             text-decoration: underline;
         }
 
@@ -117,49 +117,57 @@
         .form-input.error {
             border-color: #ff3333;
         }
+
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password a {
+            color: #0026ff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h1 class="form-title">Signup</h1>
-        <h2 class="form-subtitle">to get started</h2>
+        <h1 class="form-title">Login</h1>
+        <h2 class="form-subtitle">to your account</h2>
         
         <form>
             <div class="form-group">
-                <input type="text" class="form-input" placeholder="Username" required>
-            </div>
-            
-            <div class="form-group">
-                <input type="email" class="form-input" placeholder="itsnaeemanium@gmail.com" required>
+                <input type="email" class="form-input" placeholder="Email address" required>
             </div>
             
             <div class="form-group">
                 <input type="password" class="form-input" placeholder="Password" required>
             </div>
             
-            <div class="form-group">
-                <input type="password" class="form-input" placeholder="Confirm Password" required>
-            </div>
-            
             <div class="form-checkbox">
-                <input type="checkbox" id="terms" class="checkbox-input" required>
-                <label for="terms" class="checkbox-label">Agree to Our terms and Conditions</label>
+                <input type="checkbox" id="remember" class="checkbox-input">
+                <label for="remember" class="checkbox-label">Remember me</label>
             </div>
             
-            <button type="submit" class="submit-button">Continue</button>
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
             
-            <p class="login-text">Already registered? <a href="#" class="login-link">Login</a></p>
+            <button type="submit" class="submit-button">Login</button>
+            
+            <p class="signup-text">Don't have an account? <a href="#" class="signup-link">Signup</a></p>
         </form>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('form');
-            const usernameInput = document.querySelector('input[type="text"]');
             const emailInput = document.querySelector('input[type="email"]');
-            const passwordInput = document.querySelector('input[placeholder="Password"]');
-            const confirmPasswordInput = document.querySelector('input[placeholder="Confirm Password"]');
-            const termsCheckbox = document.querySelector('#terms');
+            const passwordInput = document.querySelector('input[type="password"]');
 
             // Create error message element
             function createErrorElement(message) {
@@ -179,23 +187,17 @@
                 inputs.forEach(input => input.classList.remove('error'));
             }
 
-            // Validate username
-            function validateUsername() {
-                const username = usernameInput.value.trim();
-                if (username.length < 3) {
-                    usernameInput.classList.add('error');
-                    const error = createErrorElement('Username must be at least 3 characters long');
-                    usernameInput.parentNode.appendChild(error);
-                    return false;
-                }
-                return true;
-            }
-
             // Validate email
             function validateEmail() {
                 const email = emailInput.value.trim();
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
+                
+                if (email === '') {
+                    emailInput.classList.add('error');
+                    const error = createErrorElement('Email address is required');
+                    emailInput.parentNode.appendChild(error);
+                    return false;
+                } else if (!emailRegex.test(email)) {
                     emailInput.classList.add('error');
                     const error = createErrorElement('Please enter a valid email address');
                     emailInput.parentNode.appendChild(error);
@@ -207,58 +209,23 @@
             // Validate password
             function validatePassword() {
                 const password = passwordInput.value;
-                if (password.length < 8) {
+                
+                if (password === '') {
                     passwordInput.classList.add('error');
-                    const error = createErrorElement('Password must be at least 8 characters long');
+                    const error = createErrorElement('Password is required');
+                    passwordInput.parentNode.appendChild(error);
+                    return false;
+                } else if (password.length < 6) {
+                    passwordInput.classList.add('error');
+                    const error = createErrorElement('Password must be at least 6 characters');
                     passwordInput.parentNode.appendChild(error);
                     return false;
                 }
                 
-                // Check for at least one uppercase letter, one lowercase letter, and one number
-                const hasUppercase = /[A-Z]/.test(password);
-                const hasLowercase = /[a-z]/.test(password);
-                const hasNumber = /[0-9]/.test(password);
-                
-                if (!(hasUppercase && hasLowercase && hasNumber)) {
-                    passwordInput.classList.add('error');
-                    const error = createErrorElement('Password must contain at least one uppercase letter, one lowercase letter, and one number');
-                    passwordInput.parentNode.appendChild(error);
-                    return false;
-                }
-                
-                return true;
-            }
-
-            // Validate password confirmation
-            function validateConfirmPassword() {
-                const password = passwordInput.value;
-                const confirmPassword = confirmPasswordInput.value;
-                
-                if (password !== confirmPassword) {
-                    confirmPasswordInput.classList.add('error');
-                    const error = createErrorElement('Passwords do not match');
-                    confirmPasswordInput.parentNode.appendChild(error);
-                    return false;
-                }
-                return true;
-            }
-
-            // Validate terms checkbox
-            function validateTerms() {
-                if (!termsCheckbox.checked) {
-                    const error = createErrorElement('You must agree to the terms and conditions');
-                    termsCheckbox.parentNode.appendChild(error);
-                    return false;
-                }
                 return true;
             }
 
             // Add input event listeners for real-time validation
-            usernameInput.addEventListener('blur', function() {
-                clearErrors();
-                validateUsername();
-            });
-
             emailInput.addEventListener('blur', function() {
                 clearErrors();
                 validateEmail();
@@ -269,32 +236,26 @@
                 validatePassword();
             });
 
-            confirmPasswordInput.addEventListener('blur', function() {
-                clearErrors();
-                validateConfirmPassword();
-            });
-
             // Form submission handler
             form.addEventListener('submit', function(event) {
                 // Clear any existing error messages
                 clearErrors();
                 
                 // Run all validations
-                const isUsernameValid = validateUsername();
                 const isEmailValid = validateEmail();
                 const isPasswordValid = validatePassword();
-                const isConfirmPasswordValid = validateConfirmPassword();
-                const isTermsChecked = validateTerms();
                 
                 // If any validation fails, prevent form submission
-                if (!(isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid && isTermsChecked)) {
+                if (!(isEmailValid && isPasswordValid)) {
                     event.preventDefault();
                 } else {
                     // If all validations pass, you could add code here to:
-                    // - Show a success message
-                    // - Submit the form via AJAX
-                    // - Redirect the user
-                    console.log("Form submitted successfully!");
+                    // - Submit login credentials
+                    // - Handle authentication
+                    console.log("Login form submitted successfully!");
+                    
+                    // For demo purposes, you might want to prevent the actual submission:
+                    // event.preventDefault();
                 }
             });
         });

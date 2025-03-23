@@ -261,6 +261,9 @@ img {
     display: flex;
     gap: 15px;
 }
+.auth-buttons button a{
+   color: white;
+}
 
 .menu-toggle {
     display: none;
