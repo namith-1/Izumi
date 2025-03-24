@@ -3,384 +3,1208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Izumi Learning Platform - Dashboard</title>
+    <title>EduHub - Student Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="studentdashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6200ea;
+            --primary-light: #9d46ff;
+            --primary-dark: #0a00b6;
+            --accent-color: #ff6584;
+            --background-dark: #121212;
+            --background-light: #1e1e1e;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-tertiary: rgba(255, 255, 255, 0.5);
+            --success-color: #00e676;
+            --warning-color: #ffea00;
+            --error-color: #ff1744;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+            --font-main: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--background-light);
+            padding: 20px;
+            transition: var(--transition);
+            z-index: 10;
+            box-shadow: var(--box-shadow);
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-logo i {
+            font-size: 28px;
+            color: var(--primary-light);
+            margin-right: 10px;
+        }
+
+        .sidebar-logo h2 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+        }
+
+        .sidebar-menu i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .user-profile {
+            position: absolute;
+            bottom: 20px;
+            width: calc(100% - 40px);
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+        }
+
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-info h4 {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .user-info p {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title h1 {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: 8px 15px;
+            width: 300px;
+        }
+
+        .search-bar input {
+            background-color: transparent;
+            border: none;
+            color: var(--text-primary);
+            width: 100%;
+            padding: 5px;
+            font-family: var(--font-main);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+        }
+
+        .search-bar i {
+            color: var(--text-tertiary);
+            margin-right: 10px;
+        }
+
+        /* Dashboard Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .stat-card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(98, 0, 234, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stat-card-icon i {
+            font-size: 20px;
+            color: var(--primary-light);
+        }
+
+        .stat-card-value {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .stat-card-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Courses Section */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .view-all {
+            color: var(--primary-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .view-all i {
+            margin-left: 5px;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-image {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .course-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .course-progress {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 5px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--success-color);
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .course-info {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .course-instructor {
+            display: flex;
+            align-items: center;
+        }
+
+        .course-instructor img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .instructor-name {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Calendar */
+        .calendar-section {
+            margin-top: 40px;
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background-color: transparent;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+        }
+
+        .current-month {
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .calendar-day {
+            text-align: center;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 14px;
+            padding-bottom: 10px;
+        }
+
+        .calendar-date {
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .calendar-date:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .calendar-date.current {
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+        }
+
+        .calendar-date.has-event::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        /* Magazines Page */
+        .magazines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .magazine-card {
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .magazine-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .magazine-cover {
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .magazine-content {
+            padding: 20px;
+        }
+
+        .magazine-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .magazine-details {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .magazine-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .magazine-cta {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .magazine-cta:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* Games Page */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .game-card {
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .game-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .game-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .game-content {
+            padding: 20px;
+        }
+
+        .game-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .game-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .game-cta {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            border: none;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            font-family: var(--font-main);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .game-cta:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* Mobile Responsive */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 20;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-bar {
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            .calendar-section {
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cards-container,
+            .courses-grid,
+            .magazines-grid,
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Page Content (Hidden by default) */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <div class="dashboard">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-logo">
-                    <div class="logo-shape"></div>
-                    <span>izumi</span>
-                </div>
-                <!-- <button class="sidebar-toggle" id="sidebarToggle"> -->
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" data-section="overview">
-                    <i class="fas fa-home"></i>
-                    <span>Overview</span>
-                </a>
-                <a href="#" class="nav-item" data-section="my-courses">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>My Courses</span>
-                </a>
-                <a href="#" class="nav-item" data-section="magazines">
-                    <i class="fas fa-book-open"></i>
-                    <span>Magazines</span>
-                </a>
-                <a href="#" class="nav-item" data-section="qa-forum">
-                    <i class="fas fa-comments"></i>
-                    <span>Q&A Forum</span>
-                </a>
-                <a href="#" class="nav-item" data-section="calendar">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>Calendar</span>
-                </a>
-                <a href="#" class="nav-item" data-section="achievements">
-                    <i class="fas fa-medal"></i>
-                    <span>Achievements</span>
-                </a>
-            </nav>
-            
-            <div class="sidebar-footer">
-                <a href="#" class="nav-item">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
-                </a>
-                <a href="login.html" class="nav-item">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </a>
-            </div>
-        </aside>
-        
-        <!-- Main Content Area -->
-        <main class="main-content">
-            <header class="main-header">
-                <div class="header-left">
-                    <h1 class="main-title">Dashboard</h1>
-                    <p class="welcome-message">Welcome back, Alex!</p>
-                </div>
-                
-                <div class="header-right">
-                    <div class="search-container">
-                        <input type="text" placeholder="Search for courses, topics, or questions...">
-                        <!-- <button class="search-btn"> -->
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="notifications">
-                        <!-- <button class="notification-btn"> -->
-                            <i class="fas fa-bell"></i>
-                            <span class="notification-indicator"></span>
-                        </button>
-                    </div>
-                    
-                    <div class="user-profile">
-                        <div class="user-avatar">A</div>
-                        <div class="user-info">
-                            <p class="user-name">Alex Johnson</p>
-                            <p class="user-role">Student</p>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            
-            <!-- Overview Section -->
-            <section id="overview" class="content-section active">
-                <div class="overview-header">
-                    <h2>Your Learning Overview</h2>
-                    <div class="filters">
-                        <!-- <select name="timeframe" id="timeframe"> -->
-                            <option value="week">This Week</option>
-                            <option value="month">This Month</option>
-                            <option value="year">This Year</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-card-header">
-                            <h3>Course Progress</h3>
-                            <div class="stat-icon primary">
-                                <i class="fas fa-book"></i>
-                            </div>
-                        </div>
-                        <div class="stat-card-body">
-                            <div class="stat">75%</div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 75%"></div>
-                            </div>
-                            <p class="stat-description">Overall completion rate</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-card-header">
-                            <h3>Learning Streak</h3>
-                            <div class="stat-icon warning">
-                                <i class="fas fa-fire"></i>
-                            </div>
-                        </div>
-                        <div class="stat-card-body">
-                            <div class="stat">12 <span>days</span></div>
-                            <div class="streak-calendar">
-                                <div class="streak-day active"></div>
-                                <div class="streak-day active"></div>
-                                <div class="streak-day active"></div>
-                                <div class="streak-day active"></div>
-                                <div class="streak-day active"></div>
-                                <div class="streak-day"></div>
-                                <div class="streak-day"></div>
-                            </div>
-                            <p class="stat-description">Keep it up!</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-card-header">
-                            <h3>Forum Activity</h3>
-                            <div class="stat-icon success">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                        </div>
-                        <div class="stat-card-body">
-                            <div class="stat">18 <span>answers</span></div>
-                            <div class="activity-graph">
-                                <div class="bar" style="height: 30%"></div>
-                                <div class="bar" style="height: 50%"></div>
-                                <div class="bar" style="height: 70%"></div>
-                                <div class="bar" style="height: 40%"></div>
-                                <div class="bar" style="height: 90%"></div>
-                                <div class="bar" style="height: 60%"></div>
-                                <div class="bar active" style="height: 80%"></div>
-                            </div>
-                            <p class="stat-description">You've helped 42 students</p>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-card-header">
-                            <h3>Achievements</h3>
-                            <div class="stat-icon accent">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                        </div>
-                        <div class="stat-card-body">
-                            <div class="stat">7 <span>badges</span></div>
-                            <div class="badges-preview">
-                                <div class="badge" title="Course Completer">
-                                    <i class="fas fa-award"></i>
-                                </div>
-                                <div class="badge" title="Problem Solver">
-                                    <i class="fas fa-puzzle-piece"></i>
-                                </div>
-                                <div class="badge" title="Helpful Peer">
-                                    <i class="fas fa-hands-helping"></i>
-                                </div>
-                                <div class="badge more" title="View All">
-                                    <span>+4</span>
-                                </div>
-                            </div>
-                            <p class="stat-description">2 new badges this month</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="current-courses">
-                    <div class="section-header">
-                        <h2>Continue Learning</h2>
-                        <a href="#" class="view-all">View All Courses</a>
-                    </div>
-                    
-                    <div class="courses-grid">
-                        <div class="course-card">
-                            <div class="course-image" style="background-color: #5d35c9;">
-                                <div class="course-progress-indicator" style="width: 65%"></div>
-                                <div class="course-image-overlay">
-                                    <i class="fas fa-code course-icon"></i>
-                                </div>
-                            </div>
-                            <div class="course-content">
-                                <div class="course-badge">In Progress</div>
-                                <h3 class="course-title">Advanced JavaScript Patterns</h3>
-                                <div class="course-meta">
-                                    <div class="course-instructor">
-                                        <div class="instructor-avatar"></div>
-                                        <span>Dr. Julia Chen</span>
-                                    </div>
-                                    <div class="course-stats">
-                                        <div class="course-stat">
-                                            <i class="fas fa-clock"></i>
-                                            <span>4h remaining</span>
-                                        </div>
-                                        <div class="course-stat">
-                                            <i class="fas fa-layer-group"></i>
-                                            <span>12/18 lessons</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-footer">
-                                    <div class="progress-text">65% complete</div>
-                                    <a href="#" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="course-card">
-                            <div class="course-image" style="background-color: #02c39a;">
-                                <div class="course-progress-indicator" style="width: 30%"></div>
-                                <div class="course-image-overlay">
-                                    <i class="fas fa-database course-icon"></i>
-                                </div>
-                            </div>
-                            <div class="course-content">
-                                <div class="course-badge">In Progress</div>
-                                <h3 class="course-title">Data Science Fundamentals</h3>
-                                <div class="course-meta">
-                                    <div class="course-instructor">
-                                        <div class="instructor-avatar"></div>
-                                        <span>Prof. Michael Lee</span>
-                                    </div>
-                                    <div class="course-stats">
-                                        <div class="course-stat">
-                                            <i class="fas fa-clock"></i>
-                                            <span>8h remaining</span>
-                                        </div>
-                                        <div class="course-stat">
-                                            <i class="fas fa-layer-group"></i>
-                                            <span>6/20 lessons</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-footer">
-                                    <div class="progress-text">30% complete</div>
-                                    <a href="#" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="course-card">
-                            <div class="course-image" style="background-color: #ed8936;">
-                                <div class="course-progress-indicator" style="width: 90%"></div>
-                                <div class="course-image-overlay">
-                                    <i class="fas fa-paint-brush course-icon"></i>
-                                </div>
-                            </div>
-                            <div class="course-content">
-                                <div class="course-badge">Almost Done</div>
-                                <h3 class="course-title">UI/UX Design Principles</h3>
-                                <div class="course-meta">
-                                    <div class="course-instructor">
-                                        <div class="instructor-avatar"></div>
-                                        <span>Sarah Williams</span>
-                                    </div>
-                                    <div class="course-stats">
-                                        <div class="course-stat">
-                                            <i class="fas fa-clock"></i>
-                                            <span>1h remaining</span>
-                                        </div>
-                                        <div class="course-stat">
-                                            <i class="fas fa-layer-group"></i>
-                                            <span>14/15 lessons</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-footer">
-                                    <div class="progress-text">90% complete</div>
-                                    <a href="#" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="recent-activity">
-                    <div class="section-header">
-                        <h2>Recent Activity</h2>
-                        <a href="#" class="view-all">View All</a>
-                    </div>
-                    
-                    <div class="activity-timeline">
-                        <div class="activity-item">
-                            <div class="activity-icon forum">
-                                <i class="fas fa-comment-alt"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h4>You answered a question in Advanced JavaScript forum</h4>
-                                <p>"How do closures work in JavaScript? Here's my explanation..."</p>
-                                <div class="activity-meta">
-                                    <span class="time">2 hours ago</span>
-                                    <span class="likes">5 likes</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="activity-item">
-                            <div class="activity-icon course">
-                                <i class="fas fa-play-circle"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h4>Completed lesson: "Introduction to Neural Networks"</h4>
-                                <p>Data Science Fundamentals - Module 3, Lesson 4</p>
-                                <div class="activity-meta">
-                                    <span class="time">Yesterday</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="activity-item">
-                            <div class="activity-icon achievement">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="activity-content">
-                                <h4>Earned badge: "Problem Solver"</h4>
-                                <p>For answering 10 questions marked as "Solved" in the forum</p>
-                                <div class="activity-meta">
-                                    <span class="time">2 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Other content sections will be shown/hidden via JavaScript -->
-            <section id="my-courses" class="content-section">
-                <h2>My Courses</h2>
-                <p>Your courses content will appear here.</p>
-            </section>
-            
-            <section id="magazines" class="content-section">
-                <h2>Course Magazines</h2>
-                <p>Your curated magazines will appear here.</p>
-            </section>
-            
-            <section id="qa-forum" class="content-section">
-                <h2>Q&A Forum</h2>
-                <p>Forum discussions will appear here.</p>
-            </section>
-            
-            <section id="calendar" class="content-section">
-                <h2>Calendar</h2>
-                <p>Your learning schedule will appear here.</p>
-            </section>
-            
-            <section id="achievements" class="content-section">
-                <h2>Achievements</h2>
-                <p>Your badges and achievements will appear here.</p>
-            </section>
-        </main>
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
     </div>
 
-    <script src="studentdashboard.js"></script>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <i class="fas fa-graduation-cap"></i>
+            <h2>EduHub</h2>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active" data-page="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="#" data-page="courses"><i class="fas fa-book"></i> My Courses</a></li>
+            <li><a href="#" data-page="magazines"><i class="fas fa-newspaper"></i> Magazines</a></li>
+            <li><a href="#" data-page="games"><i class="fas fa-gamepad"></i> Games</a></li>
+            <li><a href="#"><i class="fas fa-certificate"></i> Certificates</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+
+        <div class="user-profile">
+            <img src="/api/placeholder/40/40" alt="User Profile">
+            <div class="user-info">
+                <h4>Alex Johnson</h4>
+                <p>Student</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Dashboard Page -->
+        <div class="page-content active" id="dashboard">
+            <div class="page-header">
+                <div class="page-title">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search courses, magazines, games...">
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="cards-container">
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card-value">12</div>
+                    <div class="stat-card-label">Enrolled Courses</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card-value">5</div>
+                    <div class="stat-card-label">Certificates Earned</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card-value">28.5</div>
+                    <div class="stat-card-label">Hours Learned</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card-value">840</div>
+                    <div class="stat-card-label">Points Earned</div>
+                </div>
+            </div>
+
+            <!-- In Progress Courses -->
+            <div class="section-header">
+                <h2 class="section-title">Continue Learning</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('/api/placeholder/300/160')">
+                        <div class="course-category">Programming</div>
+                        <div class="course-progress">
+                            <div class="progress-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Advanced Python Programming: Building Modern Applications</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 12h remaining</span>
+                            <span><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        <div class="course-instructor">
+                            <img src="/api/placeholder/30/30" alt="Instructor">
+                            <span class="instructor-name">Dr. Sarah Chen</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('/api/placeholder/300/160')">
+                        <div class="course-category">Design</div>
+                        <div class="course-progress">
+                            <div class="progress-bar" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">UI/UX Design Fundamentals: From Concept to Prototype</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 18h remaining</span>
+                            <span><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
+                        <div class="course-instructor">
+                            <img src="/api/placeholder/30/30" alt="Instructor">
+                            <span class="instructor-name">James Wilson</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('/api/placeholder/300/160')">
+                        <div class="course-category">Data Science</div>
+                        <div class="course-progress">
+                            <div class="progress-bar" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Machine Learning: Mathematical Foundations and Algorithms</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 22h remaining</span>
+                            <span><i class="fas fa-signal"></i> Advanced</span>
+                        </div>
+                        <div class="course-instructor">
+                            <img src="/api/placeholder/30/30" alt="Instructor">
+                            <span class="instructor-name">Prof. Michael Lee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        
+               
+        </div>
+
+        <!-- Magazines Page -->
+        <div class="page-content" id="magazines">
+            <div class="page-header">
+                <div class="page-title">
+                    <h1>Educational Magazines</h1>
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search magazines...">
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Featured Magazines</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="magazines-grid">
+                <div class="magazine-card">
+                    <div class="magazine-cover" style="background-image: url('/api/placeholder/250/320')"></div>
+                    <div class="magazine-content">
+                        <h3 class="magazine-title">Tech Innovations Today</h3>
+                        <div class="magazine-details">
+                            <span><i class="fas fa-calendar"></i> March 2025</span>
+                            <span><i class="fas fa-bookmark"></i> Tech</span>
+                        </div>
+                        <p class="magazine-description">Exploring the latest breakthroughs in AI, quantum computing, and sustainable technology for a greener future.</p>
+                        <a href="#" class="magazine-cta">Read Now</a>
+                    </div>
+                </div>
+                <div class="magazine-card">
+                    <div class="magazine-cover" style="background-image: url('/api/placeholder/250/320')"></div>
+                    <div class="magazine-content">
+                        <h3 class="magazine-title">Data Science Journal</h3>
+                        <div class="magazine-details">
+                            <span><i class="fas fa-calendar"></i> February 2025</span>
+                            <span><i class="fas fa-bookmark"></i> Data</span>
+                        </div>
+                        <p class="magazine-description">In-depth articles on machine learning algorithms, statistical methods, and real-world applications in various industries.</p>
+                        <a href="#" class="magazine-cta">Read Now</a>
+                    </div>
+                </div>
+                <div class="magazine-card">
+                    <div class="magazine-cover" style="background-image: url('/api/placeholder/250/320')"></div>
+                    <div class="magazine-content">
+                        <h3 class="magazine-title">Design Perspectives</h3>
+                        <div class="magazine-details">
+                            <span><i class="fas fa-calendar"></i> March 2025</span>
+                            <span><i class="fas fa-bookmark"></i> Design</span>
+                        </div>
+                        <p class="magazine-description">Showcasing innovative designs, trends in UI/UX, and interviews with leading designers from around the world.</p>
+                        <a href="#" class="magazine-cta">Read Now</a>
+                    </div>
+                </div>
+<div class="magazine-card">
+    <div class="magazine-cover" style="background-image: url('/api/placeholder/250/320')"></div>
+    <div class="magazine-content">
+        <h3 class="magazine-title">Business Strategy Review</h3>
+        <div class="magazine-details">
+            <span><i class="fas fa-calendar"></i> January 2025</span>
+            <span><i class="fas fa-bookmark"></i> Business</span>
+        </div>
+        <p class="magazine-description">Analysis of market trends, case studies on successful companies, and insights from industry leaders.</p>
+        <a href="#" class="magazine-cta">Read Now</a>
+    </div>
+</div>
+<div class="magazine-card">
+    <div class="magazine-cover" style="background-image: url('/api/placeholder/250/320')"></div>
+    <div class="magazine-content">
+        <h3 class="magazine-title">Science Frontiers</h3>
+        <div class="magazine-details">
+            <span><i class="fas fa-calendar"></i> March 2025</span>
+            <span><i class="fas fa-bookmark"></i> Science</span>
+        </div>
+        <p class="magazine-description">The latest discoveries in physics, biology, astronomy, and other scientific fields explained in an accessible way.</p>
+        <a href="#" class="magazine-cta">Read Now</a>
+    </div>
+</div>
+<div class="magazine-card">
+    <div class="magazine-cover" style="background-image: url('/api/placeholder/250/320')"></div>
+    <div class="magazine-content">
+        <h3 class="magazine-title">Language & Culture</h3>
+        <div class="magazine-details">
+            <span><i class="fas fa-calendar"></i> February 2025</span>
+            <span><i class="fas fa-bookmark"></i> Humanities</span>
+        </div>
+        <p class="magazine-description">Dive into the world's languages, traditions, and cultural phenomena with expert insights and analysis.</p>
+        <a href="#" class="magazine-cta">Read Now</a>
+    </div>
+</div>
+</div>
+
+<div class="section-header" style="margin-top: 40px;">
+<h2 class="section-title">New Releases</h2>
+<a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<div class="magazines-grid">
+<div class="magazine-card">
+    <div class="magazine-cover" style="background-image: url('/api/placeholder/250/320')"></div>
+    <div class="magazine-content">
+        <h3 class="magazine-title">Cybersecurity Today</h3>
+        <div class="magazine-details">
+            <span><i class="fas fa-calendar"></i> March 2025</span>
+            <span><i class="fas fa-bookmark"></i> Security</span>
+        </div>
+        <p class="magazine-description">Latest threats, defensive strategies, and emerging technologies in the cybersecurity landscape.</p>
+        <a href="#" class="magazine-cta">Read Now</a>
+    </div>
+</div>
+<div class="magazine-card">
+    <div class="magazine-cover" style="background-image: url('/api/placeholder/250/320')"></div>
+    <div class="magazine-content">
+        <h3 class="magazine-title">Digital Art & Animation</h3>
+        <div class="magazine-details">
+            <span><i class="fas fa-calendar"></i> March 2025</span>
+            <span><i class="fas fa-bookmark"></i> Arts</span>
+        </div>
+        <p class="magazine-description">Highlighting stunning digital artworks, animation techniques, and interviews with leading digital artists.</p>
+        <a href="#" class="magazine-cta">Read Now</a>
+    </div>
+</div>
+<div class="magazine-card">
+    <div class="magazine-cover" style="background-image: url('/api/placeholder/250/320')"></div>
+    <div class="magazine-content">
+        <h3 class="magazine-title">Environmental Science Journal</h3>
+        <div class="magazine-details">
+            <span><i class="fas fa-calendar"></i> March 2025</span>
+            <span><i class="fas fa-bookmark"></i> Environment</span>
+        </div>
+        <p class="magazine-description">Research findings, sustainability practices, and insights on climate change and conservation efforts.</p>
+        <a href="#" class="magazine-cta">Read Now</a>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Games Page -->
+<div class="page-content" id="games">
+<div class="page-header">
+<div class="page-title">
+    <h1>Educational Games</h1>
+</div>
+<div class="search-bar">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Search games...">
+</div>
+</div>
+
+<div class="section-header">
+<h2 class="section-title">Featured Games</h2>
+<a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<div class="games-grid">
+<div class="game-card">
+    <div class="game-image" style="background-image: url('/api/placeholder/300/200')">
+        <div class="game-category">Math</div>
+    </div>
+    <div class="game-content">
+        <h3 class="game-title">MathQuest: Algebra Adventure</h3>
+        <div class="game-info">
+            <span><i class="fas fa-star"></i> 4.8/5</span>
+            <span><i class="fas fa-users"></i> 12k+ players</span>
+        </div>
+        <p class="game-description">Solve algebraic puzzles in an immersive fantasy world. Master equations, graph functions, and defeat math monsters!</p>
+        <button class="game-cta">Play Now</button>
+    </div>
+</div>
+<div class="game-card">
+    <div class="game-image" style="background-image: url('/api/placeholder/300/200')">
+        <div class="game-category">Science</div>
+    </div>
+    <div class="game-content">
+        <h3 class="game-title">Quantum Lab: Physics Simulator</h3>
+        <div class="game-info">
+            <span><i class="fas fa-star"></i> 4.6/5</span>
+            <span><i class="fas fa-users"></i> 8k+ players</span>
+        </div>
+        <p class="game-description">Build experiments, solve physics puzzles, and explore quantum mechanics concepts in this interactive simulator.</p>
+        <button class="game-cta">Play Now</button>
+    </div>
+</div>
+<div class="game-card">
+    <div class="game-image" style="background-image: url('/api/placeholder/300/200')">
+        <div class="game-category">Language</div>
+    </div>
+    <div class="game-content">
+        <h3 class="game-title">WordCraft: Vocabulary Builder</h3>
+        <div class="game-info">
+            <span><i class="fas fa-star"></i> 4.9/5</span>
+            <span><i class="fas fa-users"></i> 15k+ players</span>
+        </div>
+        <p class="game-description">Expand your vocabulary through puzzles, word games, and challenges in multiple languages and difficulty levels.</p>
+        <button class="game-cta">Play Now</button>
+    </div>
+</div>
+</div>
+
+<div class="section-header" style="margin-top: 40px;">
+<h2 class="section-title">New Games</h2>
+<a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<div class="games-grid">
+<div class="game-card">
+    <div class="game-image" style="background-image: url('/api/placeholder/300/200')">
+        <div class="game-category">Programming</div>
+    </div>
+    <div class="game-content">
+        <h3 class="game-title">Code Heroes: Algorithm Challenge</h3>
+        <div class="game-info">
+            <span><i class="fas fa-star"></i> 4.7/5</span>
+            <span><i class="fas fa-users"></i> 5k+ players</span>
+        </div>
+        <p class="game-description">Learn coding concepts through fun puzzles and challenges. Write code to solve problems and advance through levels.</p>
+        <button class="game-cta">Play Now</button>
+    </div>
+</div>
+<div class="game-card">
+    <div class="game-image" style="background-image: url('/api/placeholder/300/200')">
+        <div class="game-category">History</div>
+    </div>
+    <div class="game-content">
+        <h3 class="game-title">TimeQuest: Historical Adventures</h3>
+        <div class="game-info">
+            <span><i class="fas fa-star"></i> 4.5/5</span>
+            <span><i class="fas fa-users"></i> 7k+ players</span>
+        </div>
+        <p class="game-description">Travel through different historical periods, solve puzzles, and learn about key events and figures in world history.</p>
+        <button class="game-cta">Play Now</button>
+    </div>
+</div>
+<div class="game-card">
+    <div class="game-image" style="background-image: url('/api/placeholder/300/200')">
+        <div class="game-category">Art</div>
+    </div>
+    <div class="game-content">
+        <h3 class="game-title">ArtMaster: Digital Canvas</h3>
+        <div class="game-info">
+            <span><i class="fas fa-star"></i> 4.8/5</span>
+            <span><i class="fas fa-users"></i> 6k+ players</span>
+        </div>
+        <p class="game-description">Learn digital art techniques through interactive tutorials and challenges. Create stunning artwork and share with others.</p>
+        <button class="game-cta">Play Now</button>
+    </div>
+</div>
+</div>
+
+<div class="section-header" style="margin-top: 40px;">
+<h2 class="section-title">Community Favorites</h2>
+<a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<div class="games-grid">
+<div class="game-card">
+    <div class="game-image" style="background-image: url('/api/placeholder/300/200')">
+        <div class="game-category">Finance</div>
+    </div>
+    <div class="game-content">
+        <h3 class="game-title">Market Simulator: Investment Game</h3>
+        <div class="game-info">
+            <span><i class="fas fa-star"></i> 4.7/5</span>
+            <span><i class="fas fa-users"></i> 10k+ players</span>
+        </div>
+        <p class="game-description">Learn investment strategies in a risk-free environment. Build and manage virtual portfolios and compete with friends.</p>
+        <button class="game-cta">Play Now</button>
+    </div>
+</div>
+<div class="game-card">
+    <div class="game-image" style="background-image: url('/api/placeholder/300/200')">
+        <div class="game-category">Geography</div>
+    </div>
+    <div class="game-content">
+        <h3 class="game-title">GeoExplorer: World Adventure</h3>
+        <div class="game-info">
+            <span><i class="fas fa-star"></i> 4.9/5</span>
+            <span><i class="fas fa-users"></i> 14k+ players</span>
+        </div>
+        <p class="game-description">Explore countries, landmarks, and cultures in this interactive geography game. Test your knowledge with fun quizzes.</p>
+        <button class="game-cta">Play Now</button>
+    </div>
+</div>
+<div class="game-card">
+    <div class="game-image" style="background-image: url('/api/placeholder/300/200')">
+        <div class="game-category">Music</div>
+    </div>
+    <div class="game-content">
+        <h3 class="game-title">Rhythm Master: Music Theory</h3>
+        <div class="game-info">
+            <span><i class="fas fa-star"></i> 4.6/5</span>
+            <span><i class="fas fa-users"></i> 9k+ players</span>
+        </div>
+        <p class="game-description">Learn music theory through interactive lessons and rhythm games. Practice notes, scales, and compose your own tunes.</p>
+        <button class="game-cta">Play Now</button>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Courses Page (Just for navigation functionality) -->
+<div class="page-content" id="courses">
+<div class="page-header">
+<div class="page-title">
+    <h1>My Courses</h1>
+</div>
+<div class="search-bar">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Search your courses...">
+</div>
+</div>
+
+<div class="section-header">
+<h2 class="section-title">In Progress</h2>
+<a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+</div>
+
+<!-- The content here would be similar to the dashboard's course grid, expanded -->
+</div>
+</div>
+
+<script>
+// Menu Toggle
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+
+menuToggle.addEventListener('click', () => {
+sidebar.classList.toggle('active');
+});
+
+// Page Navigation
+const navLinks = document.querySelectorAll('.sidebar-menu a[data-page]');
+const pageContents = document.querySelectorAll('.page-content');
+
+navLinks.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+
+// Remove active class from all links
+navLinks.forEach(item => item.classList.remove('active'));
+
+// Add active class to clicked link
+this.classList.add('active');
+
+// Hide all pages
+pageContents.forEach(page => page.classList.remove('active'));
+
+// Show the selected page
+const pageId = this.getAttribute('data-page');
+document.getElementById(pageId).classList.add('active');
+
+// Hide sidebar on mobile after clicking
+if (window.innerWidth <= 992) {
+    sidebar.classList.remove('active');
+}
+});
+});
+
+// Calendar Date Click Event
+const calendarDates = document.querySelectorAll('.calendar-date');
+
+calendarDates.forEach(date => {
+date.addEventListener('click', function() {
+calendarDates.forEach(d => d.classList.remove('current'));
+this.classList.add('current');
+});
+});
+
+// Magazine Read Button Event
+const magazineCtas = document.querySelectorAll('.magazine-cta');
+
+magazineCtas.forEach(cta => {
+cta.addEventListener('click', function(e) {
+e.preventDefault();
+alert('Opening magazine reader...');
+});
+});
+
+// Game Play Button Event
+const gameCtas = document.querySelectorAll('.game-cta');
+
+gameCtas.forEach(cta => {
+cta.addEventListener('click', function() {
+alert('Loading game...');
+});
+});
+
+// Course Card Click Event
+const courseCards = document.querySelectorAll('.course-card');
+
+courseCards.forEach(card => {
+card.addEventListener('click', function() {
+alert('Opening course content...');
+});
+});
+
+// Stat Card Click Event
+const statCards = document.querySelectorAll('.stat-card');
+
+statCards.forEach(card => {
+card.addEventListener('click', function() {
+const label = this.querySelector('.stat-card-label').textContent;
+alert(`Viewing detailed ${label} statistics...`);
+});
+});
+</script>
 </body>
 </html>
