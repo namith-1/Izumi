@@ -708,3 +708,85 @@ document.addEventListener('DOMContentLoaded', function() {
         // In this demo, we'll just leave this as a placeholder
     }
 });
+const sidebar = document.getElementById('sidebar');
+
+menuToggle.addEventListener('click', () => {
+sidebar.classList.toggle('active');
+});
+
+// Page Navigation
+const navLinks = document.querySelectorAll('.sidebar-menu a[data-page]');
+const pageContents = document.querySelectorAll('.page-content');
+
+navLinks.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+
+// Remove active class from all links
+navLinks.forEach(item => item.classList.remove('active'));
+
+// Add active class to clicked link
+this.classList.add('active');
+
+// Hide all pages
+pageContents.forEach(page => page.classList.remove('active'));
+
+// Show the selected page
+const pageId = this.getAttribute('data-page');
+document.getElementById(pageId).classList.add('active');
+
+// Hide sidebar on mobile after clicking
+if (window.innerWidth <= 992) {
+    sidebar.classList.remove('active');
+}
+});
+});
+
+// Calendar Date Click Event
+const calendarDates = document.querySelectorAll('.calendar-date');
+
+calendarDates.forEach(date => {
+date.addEventListener('click', function() {
+calendarDates.forEach(d => d.classList.remove('current'));
+this.classList.add('current');
+});
+});
+
+// Magazine Read Button Event
+const magazineCtas = document.querySelectorAll('.magazine-cta');
+
+magazineCtas.forEach(cta => {
+cta.addEventListener('click', function(e) {
+e.preventDefault();
+alert('Opening magazine reader...');
+});
+});
+// Menu Toggle
+const menuToggle = document.getElementById('menuToggle');
+// Game Play Button Event
+const gameCtas = document.querySelectorAll('.game-cta');
+
+gameCtas.forEach(cta => {
+cta.addEventListener('click', function() {
+alert('Loading game...');
+});
+});
+
+// Course Card Click Event
+const courseCards = document.querySelectorAll('.course-card');
+
+courseCards.forEach(card => {
+card.addEventListener('click', function() {
+alert('Opening course content...');
+});
+});
+
+// Stat Card Click Event
+const statCards = document.querySelectorAll('.stat-card');
+
+statCards.forEach(card => {
+card.addEventListener('click', function() {
+const label = this.querySelector('.stat-card-label').textContent;
+alert(`Viewing detailed ${label} statistics...`);
+});
+});
