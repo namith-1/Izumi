@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register Form</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form action="" class="sign-in-form">
+                    <h2 class="title">Sign in</h2>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+                    </div>
+    
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password" placeholder="Password" autocomplete="current-password" required>
+                    </div>
+    
+                    <input type="submit" value="Login" class="btn solid">
+                    <p class="social-text">Or Sign in with social platforms</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon" aria-label="Sign in with Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" aria-label="Sign in with X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="Sign in with Google"><i class="fab fa-google"></i></a>
+                    </div>
+                </form>
+    
+                <form action="" class="sign-up-form">
+                    <h2 class="title">Sign up</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="username" placeholder="Username" autocomplete="username" required>
+                    </div>
+    
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+                    </div>
+    
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password" placeholder="Password" autocomplete="new-password" required>
+                    </div>
+    
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" autocomplete="new-password" required>
+                    </div>
+    
+                    <div class="terms-container" style="display: flex; align-items: center; margin: 10px 0; width: 100%;">
+                        <input type="checkbox" id="terms" style="margin-right: 10px;" required>
+                        <label for="terms" style="color: var(--text-secondary); font-size: 0.9rem;">I agree to the Terms and Conditions</label>
+                    </div>
+    
+                    <input type="submit" value="Sign up" class="btn solid">
+                    <p class="social-text">Or Sign up with social platforms</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon" aria-label="Sign up with Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" aria-label="Sign up with X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-icon" aria-label="Sign up with Google"><i class="fab fa-google"></i></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>New here?</h3>
+                    <p>Create an account to access all the features and benefits of our platform.</p>
+                    <button class="btn transparent" id="sign-up-btn">Sign up</button>
+                </div>
+                <img src="img/undraw_education_f8ru.svg" class="image" alt="Education illustration">
+            </div>
+    
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>One of us?</h3>
+                    <p>Already have an account? Sign in to access your profile and continue your journey.</p>
+                    <button class="btn transparent" id="sign-in-btn">Sign in</button>
+                </div>
+                <img src="img/register.svg" class="image" alt="Register illustration">
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Path</title>
+    <style>
+        :root {
+            --primary-color: #6200ea;
+            --primary-light: #9d46ff;
+            --primary-dark: #0a00b6;
+            --accent-color: #ff6584;
+            --background-dark: #121212;
+            --background-light: #1e1e1e;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-tertiary: rgba(255, 255, 255, 0.5);
+            --success-color: #00e676;
+            --warning-color: #ffea00;
+            --error-color: #ff1744;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+            --font-main: 'Poppins', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--background-dark);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1000px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .logo-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(157, 70, 255, 0.6);
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 30px rgba(157, 70, 255, 0.6); }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(157, 70, 255, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 30px rgba(157, 70, 255, 0.6); }
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary-light), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .role-container {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .role-card {
+            width: 300px;
+            height: 350px;
+            background-color: var(--background-light);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .role-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .role-card:hover .role-icon {
+            transform: translateY(-10px) scale(1.1);
+        }
+
+        .role-card:hover .role-title {
+            color: var(--primary-light);
+        }
+
+        .role-card:hover::before {
+            opacity: 0.8;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            transition: var(--transition);
+            opacity: 0.5;
+        }
+
+        .tutor-card::before {
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+        }
+
+        .student-card::before {
+            background: linear-gradient(to right, var(--accent-color), var(--warning-color));
+        }
+
+        .role-content {
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .role-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .tutor-icon {
+            color: var(--primary-light);
+        }
+
+        .student-icon {
+            color: var(--accent-color);
+        }
+
+        .role-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-decoration: none; /* Removes underline */
+    color: white; /* Default text color */
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+     .role-title:hover {
+       color: violet; /* Change text color on hover */ 
+    }
+
+
+        .role-description {
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* For SVG icons */
+        .svg-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        /* Animation for cards */
+        .tutor-card {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .student-card {
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-circle">
+                <div class="logo-text">Izumi</div>
+            </div>
+        </div>
+        
+        <h1>Discover Your Path</h1>
+        <p class="subtitle">Where knowledge meets passion. Tell us who you are.</p>
+        
+        <div class="role-container">
+            <!-- Tutor Card -->
+            <div class="role-card tutor-card" onclick="redirectTo('tutor.html')">
+                <div class="role-content">
+                    <!-- Tutor SVG Icon -->
+                    <svg class="svg-icon tutor-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h2  class="role-title">I'm a Tutor</h2>
+                    <p class="role-description">Guide and inspire. Share your knowledge and empower the next generation of thinkers.</p>
+                </div>
+            </div>
+            
+            <!-- Student Card -->
+            <div class="role-card student-card" onclick="redirectTo('../student.html')">
+                <div class="role-content">
+                    <!-- Student SVG Icon -->
+                    <svg class="svg-icon student-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 7H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <a href="../student.html" class="role-title">I'm a Student</a>
+                    <p class="role-description">Explore and grow. Unlock your potential through personalized learning experiences.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create stars for background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 3;
+                
+                // Random animation delay
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+
+        function redirectTo(url) {
+     window.location.href = url;
+     }
+        // Redirect function
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+
+        // Initialize
+        window.onload = function() {
+            createStars();
+        };
+    </script>
+</body>
+</html>

@@ -9,8 +9,10 @@
  */
 
  html {
-    line-height: 1.15; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
+  line-height: 1.15; /* Normalize line height */
+  text-size-adjust: 100%; /* Standard property for better compatibility */
+  -webkit-text-size-adjust: 100%; /* WebKit-based browsers */
+  
   }
   
   /* Sections
