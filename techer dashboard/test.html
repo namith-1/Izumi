@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create/Edit Course</title>
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="create_course.html">Create/Edit Courses</a></li>
+                <li><a href="test2.html">courses</a></li>
+                <li><a href="students.html">Students</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Create/Edit Course</h1>
+        
+        <label for="course-title">Course Title:</label>
+        <input type="text" id="course-title" placeholder="Enter Course Title">
+
+        <label for="course-desc">Course Description:</label>
+        <textarea id="course-desc" placeholder="Enter Course Description"></textarea>
+        
+        <button onclick="addModule()">Add Module</button>
+
+        <div id="course-content">
+            <!-- Modules appear here -->
+        </div>
+        
+        <button onclick="saveCourse()">Save Course</button>
+        <button onclick="fetchCourseData(1)">load Course</button>
+
+        <h1>Available Courses</h1>
+        <ul id="course-list"></ul>
+
+    </main>
+
+    <script src="script.js"></script> 
+</body>
+</html>
+

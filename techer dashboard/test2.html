@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Courses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #course-list {
+            margin-top: 10px;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function fetchCourses() {
+            fetch("/my-courses")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(courses => {
+                    console.log("Courses fetched:", courses); // Debugging
+                    let container = document.getElementById("course-list");
+                    container.innerHTML = "";
+
+                    if (courses.length === 0) {
+                        container.innerHTML = "<p>No courses found.</p>";
+                        return;
+                    }
+
+                    courses.forEach(course => {
+                        let div = document.createElement("div");
+                        div.innerHTML = `<a href="test.html?courseID=${encodeURIComponent(course.id)}">${course.title}</a>`;
+                        container.appendChild(div);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching courses:", error);
+                    let container = document.getElementById("course-list");
+                    container.innerHTML = `<p class="error-message">Failed to load courses. Please try again.</p>`;
+                });
+        }
+
+        window.onload = () => {
+            fetchCourses();
+        };
+    </script>
+</head>
+<body>
+    <h1>My Courses</h1>
+    <div id="course-list"><p>Loading courses...</p></div>
+</body>
+</html>

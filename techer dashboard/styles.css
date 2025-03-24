@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+input, textarea {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: none;
+    overflow: hidden;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.module {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+}
+
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    background: #ddd;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.module-body {
+    padding: 10px;
+}
+
+.text-block, .question-block {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.video-preview {
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+.module-number {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.module {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+}
+
+.module-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ddd;
+    padding: 10px;
+    cursor: pointer;
+}
+
