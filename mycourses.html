@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izumi Learning Platform - My Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="studentdashboard.css">
+    <link rel="stylesheet" href="my courses.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="logo-shape"></div>
+                    <span>izumi</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item" data-section="overview">
+                    <i class="fas fa-home"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="mycourses.html" class="nav-item active" data-section="my-courses">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>My Courses</span>
+                </a>
+                <a href="#" class="nav-item" data-section="magazines">
+                    <i class="fas fa-book-open"></i>
+                    <span>Magazines</span>
+                </a>
+                <a href="#" class="nav-item" data-section="qa-forum">
+                    <i class="fas fa-comments"></i>
+                    <span>Q&A Forum</span>
+                </a>
+                
+                <a href="#" class="nav-item" data-section="achievements">
+                    <i class="fas fa-medal"></i>
+                    <span>Achievements</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="login.html" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1 class="main-title">My Courses</h1>
+                    <p class="welcome-message">Your learning journey, Tharun!</p>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for courses, topics, or instructors...">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="notifications">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-indicator"></span>
+                        </button>
+                    </div>
+                    
+                    <div class="user-profile">
+                        <div class="user-avatar">A</div>
+                        <div class="user-info">
+                            <p class="user-name">Tharun nayak </p>
+                            <p class="user-role">Student</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Courses Filter Section -->
+            <section class="courses-filter">
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="status-filter">Status:</label>
+                        <select id="status-filter" class="filter-select">
+                            <option value="all">All Courses</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                            <option value="not-started">Not Started</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="programming">Programming</option>
+                            <option value="data-science">Data Science</option>
+                            <option value="design">Design</option>
+                            <option value="business">Business</option>
+                            <option value="language">Language</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="sort-by">Sort By:</label>
+                        <select id="sort-by" class="filter-select">
+                            <option value="recent">Recently Accessed</option>
+                            <option value="progress">Progress</option>
+                            <option value="alphabetical">Alphabetical</option>
+                            <option value="duration">Duration</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- In-Progress Courses Section -->
+            <section class="courses-section">
+                <div class="section-header">
+                    <h2>In Progress Courses</h2>
+                    <span class="course-count">3 courses</span>
+                </div>
+                
+                <div class="courses-grid">
+                    <!-- Course 1 -->
+                    <div class="course-card">
+                        <div class="course-image" style="background-color: #5d35c9;">
+                            <div class="course-progress-indicator" style="width: 65%"></div>
+                            <div class="course-image-overlay">
+                                <i class="fas fa-code course-icon"></i>
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-badge">In Progress</div>
+                            <h3 class="course-title">Advanced JavaScript Patterns</h3>
+                            <div class="course-meta">
+                                <div class="course-instructor">
+                                    <div class="instructor-avatar"></div>
+                                    <span>Dr. Julia Chen</span>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-clock"></i>
+                                        <span>4h remaining</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-layer-group"></i>
+                                        <span>12/18 lessons</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="progress-text">65% complete</div>
+                                <a href="#" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course 2 -->
+                    <div class="course-card">
+                        <div class="course-image" style="background-color: #02c39a;">
+                            <div class="course-progress-indicator" style="width: 30%"></div>
+                            <div class="course-image-overlay">
+                                <i class="fas fa-database course-icon"></i>
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-badge">In Progress</div>
+                            <h3 class="course-title">Data Science Fundamentals</h3>
+                            <div class="course-meta">
+                                <div class="course-instructor">
+                                    <div class="instructor-avatar"></div>
+                                    <span>Prof. Michael Lee</span>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-clock"></i>
+                                        <span>8h remaining</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-layer-group"></i>
+                                        <span>6/20 lessons</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="progress-text">30% complete</div>
+                                <a href="#" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course 3 -->
+                    <div class="course-card">
+                        <div class="course-image" style="background-color: #ed8936;">
+                            <div class="course-progress-indicator" style="width: 90%"></div>
+                            <div class="course-image-overlay">
+                                <i class="fas fa-paint-brush course-icon"></i>
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-badge">Almost Done</div>
+                            <h3 class="course-title">UI/UX Design Principles</h3>
+                            <div class="course-meta">
+                                <div class="course-instructor">
+                                    <div class="instructor-avatar"></div>
+                                    <span>Sarah Williams</span>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-clock"></i>
+                                        <span>1h remaining</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-layer-group"></i>
+                                        <span>14/15 lessons</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="progress-text">90% complete</div>
+                                <a href="#" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Completed Courses Section -->
+            <section class="courses-section">
+                <div class="section-header">
+                    <h2>Completed Courses</h2>
+                    <span class="course-count">2 courses</span>
+                </div>
+                
+                <div class="courses-grid">
+                    <!-- Completed Course 1 -->
+                    <div class="course-card completed">
+                        <div class="course-image" style="background-color: #718096;">
+                            <div class="course-progress-indicator" style="width: 100%"></div>
+                            <div class="course-image-overlay">
+                                <i class="fas fa-mobile-alt course-icon"></i>
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-badge completed">Completed</div>
+                            <h3 class="course-title">Mobile App Development with React Native</h3>
+                            <div class="course-meta">
+                                <div class="course-instructor">
+                                    <div class="instructor-avatar"></div>
+                                    <span>Alex Rodriguez</span>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.8/5</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-layer-group"></i>
+                                        <span>24/24 lessons</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="progress-text">Completed on March 10, 2025</div>
+                                <a href="#" class="review-btn">Review <i class="fas fa-star"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Completed Course 2 -->
+                    <div class="course-card completed">
+                        <div class="course-image" style="background-color: #3182ce;">
+                            <div class="course-progress-indicator" style="width: 100%"></div>
+                            <div class="course-image-overlay">
+                                <i class="fas fa-project-diagram course-icon"></i>
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-badge completed">Completed</div>
+                            <h3 class="course-title">Agile Project Management</h3>
+                            <div class="course-meta">
+                                <div class="course-instructor">
+                                    <div class="instructor-avatar"></div>
+                                    <span>Emily Watson</span>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-star"></i>
+                                        <span>4.5/5</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-layer-group"></i>
+                                        <span>12/12 lessons</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="progress-text">Completed on February 15, 2025</div>
+                                <a href="#" class="review-btn">Review <i class="fas fa-star"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Enrolled But Not Started Courses Section -->
+            <section class="courses-section">
+                <div class="section-header">
+                    <h2>Not Started Yet</h2>
+                    <span class="course-count">3 courses</span>
+                </div>
+                
+                <div class="courses-grid">
+                    <!-- Not Started Course 1 -->
+                    <div class="course-card not-started">
+                        <div class="course-image" style="background-color: #805ad5;">
+                            <div class="course-image-overlay">
+                                <i class="fas fa-brain course-icon"></i>
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-badge not-started">Not Started</div>
+                            <h3 class="course-title">Machine Learning with Python</h3>
+                            <div class="course-meta">
+                                <div class="course-instructor">
+                                    <div class="instructor-avatar"></div>
+                                    <span>Dr. David Kim</span>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-clock"></i>
+                                        <span>24h total</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-layer-group"></i>
+                                        <span>30 lessons</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="progress-text">Enrolled on March 1, 2025</div>
+                                <a href="#" class="start-btn">Start Now <i class="fas fa-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Not Started Course 2 -->
+                    <div class="course-card not-started">
+                        <div class="course-image" style="background-color: #e53e3e;">
+                            <div class="course-image-overlay">
+                                <i class="fas fa-language course-icon"></i>
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-badge not-started">Not Started</div>
+                            <h3 class="course-title">Business Japanese for Beginners</h3>
+                            <div class="course-meta">
+                                <div class="course-instructor">
+                                    <div class="instructor-avatar"></div>
+                                    <span>Yuki Tanaka</span>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-clock"></i>
+                                        <span>40h total</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-layer-group"></i>
+                                        <span>45 lessons</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="progress-text">Enrolled on February 28, 2025</div>
+                                <a href="#" class="start-btn">Start Now <i class="fas fa-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Not Started Course 3 -->
+                    <div class="course-card not-started">
+                        <div class="course-image" style="background-color: #38a169;">
+                            <div class="course-image-overlay">
+                                <i class="fas fa-chart-line course-icon"></i>
+                            </div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-badge not-started">Not Started</div>
+                            <h3 class="course-title">Financial Management & Investment</h3>
+                            <div class="course-meta">
+                                <div class="course-instructor">
+                                    <div class="instructor-avatar"></div>
+                                    <span>Robert Green</span>
+                                </div>
+                                <div class="course-stats">
+                                    <div class="course-stat">
+                                        <i class="fas fa-clock"></i>
+                                        <span>18h total</span>
+                                    </div>
+                                    <div class="course-stat">
+                                        <i class="fas fa-layer-group"></i>
+                                        <span>22 lessons</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="progress-text">Enrolled on March 15, 2025</div>
+                                <a href="#" class="start-btn">Start Now <i class="fas fa-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="studentdashboard.js"></script>
+    <script src="my courses.js"></script>
+</body>
+</html>
