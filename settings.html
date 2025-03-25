@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursera-Inspired Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+    <div class="settings-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="/api/placeholder/50/50" alt="Logo" class="logo-img">
+                <h2>Learning Platform</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="active"><i class="icon-settings"></i>Account Settings</li>
+                <li><i class="icon-profile"></i>Profile</li>
+                <li><i class="icon-notifications"></i>Notifications</li>
+                <li><i class="icon-privacy"></i>Privacy & Security</li>
+                <li><i class="icon-appearance"></i>Appearance</li>
+            </ul>
+        </nav>
+
+        <main class="settings-content">
+            <header>
+                <h1>Account Settings</h1>
+                <div class="user-info">
+                    <img src="/api/placeholder/60/60" alt="Profile" class="profile-img">
+                    <div>
+                        <h3>John Doe</h3>
+                        <p>Professional Developer</p>
+                    </div>
+                </div>
+            </header>
+
+            <section class="settings-section">
+                <h2>Personal Information</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" value="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" value="john.doe@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" value="+1 (555) 123-4567">
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2>Account Preferences</h2>
+                <div class="toggle-group">
+                    <div class="toggle-item">
+                        <span>Email Notifications</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-item">
+                        <span>Dark Mode</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2>Security</h2>
+                <button class="btn-primary">Change Password</button>
+                <button class="btn-secondary">Two-Factor Authentication</button>
+            </section>
+
+            <footer class="settings-footer">
+                <button class="btn-save">Save Changes</button>
+                <button class="btn-cancel">Cancel</button>
+            </footer>
+        </main>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>
