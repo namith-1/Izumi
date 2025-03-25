@@ -1,0 +1,167 @@
+:root {
+    --primary-color: #6200ea; 
+    --primary-light: #9d46ff; 
+    --primary-dark: #0a00b6; 
+    --accent-color: #ff6584; 
+    --background-dark: #121212; 
+    --background-light: #1e1e1e; 
+    --text-primary: #ffffff; 
+    --text-secondary: rgba(255, 255, 255, 0.7); 
+    --text-tertiary: rgba(255, 255, 255, 0.5); 
+    --success-color: #00e676; 
+    --warning-color: #ffea00; 
+    --error-color: #ff1744; 
+    --border-radius: 8px; 
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+    --transition: all 0.3s ease; 
+    --font-main: 'Poppins', sans-serif; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.certificates-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.certificates-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+}
+
+.certificates-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-light);
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.certificate-card {
+    background-color: var(--background-light);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.certificate-card:hover {
+    transform: scale(1.05);
+}
+
+.certificate-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.certificate-details {
+    padding: 1.5rem;
+}
+
+.certificate-details h3 {
+    color: var(--primary-light);
+    margin-bottom: 0.5rem;
+}
+
+.certificate-details p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.certificate-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--primary-light);
+}
+
+.certificate-date {
+    color: var(--text-tertiary);
+}
+
+.site-footer {
+    margin-top: 4rem;
+    background-color: var(--background-light);
+    padding: 2rem 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+    color: var(--primary-light);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-light);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    color: var(--primary-light);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
