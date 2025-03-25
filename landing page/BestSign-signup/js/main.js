@@ -1,16 +1,3 @@
-// const sign_in_btn = document.querySelector("#sign-in-btn")
-// const sign_up_btn = document.querySelector("#sign-up-btn")
-// const container = document.querySelector(".container");
-
-// sign_up_btn.addEventListener('click',() =>{
-//     container.classList.add("sign-up-mode");
-// });
-
-// sign_in_btn.addEventListener('click',() =>{
-//     container.classList.remove("sign-up-mode");
-// });
-
-
 document.addEventListener('DOMContentLoaded', function() {
     // Toggle elements
     const sign_in_btn = document.querySelector("#sign-in-btn");
@@ -182,62 +169,86 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form submission handler for sign-up form
     if (signUpForm) {
-        signUpForm.addEventListener('submit', function(event) {
-            // Clear any existing error messages
+        signUpForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
             clearErrors();
-            
+    
             // Run all validations
             const isUsernameValid = validateUsername();
             const isEmailValid = validateEmail();
             const isPasswordValid = validatePassword();
             const isConfirmPasswordValid = validateConfirmPassword();
             const isTermsChecked = validateTerms();
-            
-            // If any validation fails, prevent form submission
+    
             if (!(isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid && isTermsChecked)) {
-                event.preventDefault();
-            } else {
-                // If all validations pass
-                console.log("Sign-up form submitted successfully!");
-                // You can add AJAX submission code here
+                return; // Stop if validation fails
+            }
+    
+            // Collect form data
+            const username = usernameInput.value.trim();
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+    
+            try {
+                const response = await fetch("http://localhost:3000/signup", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, email, password })
+                });
+    
+                const data = await response.json();
+    
+                if (response.ok) {
+                    alert("Sign-up successful! You can now log in.");
+                    container.classList.remove("sign-up-mode"); // Switch to login view
+                } else {
+                    alert(data.message); // Show error message from backend
+                }
+            } catch (error) {
+                console.error("Sign-up error:", error);
+                alert("Something went wrong. Please try again.");
             }
         });
     }
     
+    
     // Form submission handler for sign-in form (with basic validation)
     if (signInForm) {
-        signInForm.addEventListener('submit', function(event) {
-            const loginEmail = document.querySelector('.sign-in-form input[type="email"]');
-            const loginPassword = document.querySelector('.sign-in-form input[type="password"]');
-            let valid = true;
-            
+        signInForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
             clearErrors();
-            
-            // Simple validation for login form
-            if (loginEmail && loginEmail.value.trim() === '') {
-                loginEmail.parentElement.classList.add('error');
-                loginEmail.parentElement.style.border = '1px solid var(--error-color)';
-                const error = createErrorElement('Email is required');
-                loginEmail.parentElement.after(error);
-                valid = false;
+    
+            const loginEmail = document.querySelector('.sign-in-form input[type="email"]').value.trim();
+            const loginPassword = document.querySelector('.sign-in-form input[type="password"]').value;
+    
+            if (!loginEmail || !loginPassword) {
+                alert("Please fill in all fields.");
+                return;
             }
-            
-            if (loginPassword && loginPassword.value.trim() === '') {
-                loginPassword.parentElement.classList.add('error');
-                loginPassword.parentElement.style.border = '1px solid var(--error-color)';
-                const error = createErrorElement('Password is required');
-                loginPassword.parentElement.after(error);
-                valid = false;
-            }
-            
-            if (!valid) {
-                event.preventDefault();
-            } else {
-                console.log("Sign-in form submitted successfully!");
-                // You can add AJAX submission code here
+    
+            try {
+                const response = await fetch("http://localhost:3000/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: loginEmail, password: loginPassword })
+                });
+    
+                const data = await response.json();
+    
+                if (response.ok) {
+                    localStorage.setItem("token", data.token); // Store JWT token
+                    alert("Login successful! Redirecting...");
+                    window.location.href = "dashboard.html"; // Redirect to dashboard
+                } else {
+                    alert(data.message); // Show error message from backend
+                }
+            } catch (error) {
+                console.error("Login error:", error);
+                alert("Something went wrong. Please try again.");
             }
         });
     }
+    
     
     // Add responsive handling for mobile screens
     function handleResponsive() {
