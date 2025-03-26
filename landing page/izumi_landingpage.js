@@ -240,57 +240,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Course card hover effect
-    const courseCards = document.querySelectorAll('.course-card');
-    
-    courseCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
-            this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.4)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '';
-        });
-    });
-    
-    // Magazine card hover effect
-    const magazineCards = document.querySelectorAll('.magazine-card');
-    
-    magazineCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-            this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.4)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '';
-        });
-    });
-    
-    // Animation on scroll
-    const animatedElements = document.querySelectorAll('.feature-card, .course-card, .magazine-card, .section-header');
-    
-    function checkIfInView() {
-        const windowHeight = window.innerHeight;
-        const windowTopPosition = window.scrollY;
-        const windowBottomPosition = windowTopPosition + windowHeight;
-        
-        animatedElements.forEach(element => {
-            const elementHeight = element.offsetHeight;
-            const elementTopPosition = element.offsetTop;
-            const elementBottomPosition = elementTopPosition + elementHeight;
-            
-            // Check if element is in view
-            if ((elementBottomPosition >= windowTopPosition) && 
-                (elementTopPosition <= windowBottomPosition)) {
-                element.classList.add('in-view');
-            }
-        });
-    }
-    
+   
+   
     // Run on load and scroll
     window.addEventListener('load', checkIfInView);
     window.addEventListener('scroll', checkIfInView);
@@ -324,3 +275,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Function to load an HTML, CSS, and JS file dynamically
+function loadSeparatedContent(htmlFile, cssFile, jsFile, containerId) {
+    fetch(htmlFile)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(containerId).innerHTML = data;  // Insert HTML into the correct div
+
+            // Dynamically load the CSS file
+            let cssLink = document.createElement("link");
+            cssLink.rel = "stylesheet";
+            cssLink.href = cssFile;
+            document.head.appendChild(cssLink);
+
+            // Dynamically load the JS file
+            let scriptTag = document.createElement("script");
+            scriptTag.src = jsFile;
+            document.body.appendChild(scriptTag);
+        })
+        .catch(error => console.error("Error loading content:", error));
+}
+
+// Load the Course section into #course-section
+loadSeparatedContent("courses/course.html", "courses/course.css", "courses/course.js", "course-section");
+
+// Load the Magazine section into #magazine-section
+loadSeparatedContent("magazines/magazine.html", "magazines/magazine.css", "magazines/magazine.js", "magazine-section");

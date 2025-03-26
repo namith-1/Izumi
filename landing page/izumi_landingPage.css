@@ -398,91 +398,7 @@ img {
     }
 }
 
-/* Featured Courses */
-.featured-courses {
-    background-color: var(--background-light);
-    position: relative;
-}
 
-.course-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
-}
-
-.course-card {
-    background-color: rgba(30, 30, 30, 0.7);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-}
-
-.course-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-}
-
-.course-image {
-    height: 200px;
-    background: url('/api/placeholder/350/200') center/cover no-repeat;
-    position: relative;
-}
-
-.course-info {
-    padding: 20px;
-}
-
-.course-info h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-}
-
-.instructor {
-    color: var(--text-tertiary);
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-}
-
-.rating {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    color: #ffd700;
-}
-
-.rating span {
-    margin-left: 10px;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-.course-features {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-    color: var(--text-tertiary);
-}
-
-.course-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 15px;
-}
-
-.price {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.view-more-container {
-    text-align: center;
-    margin-top: 50px;
-}
 
 /* Discussions and Q&A */
 .discussions {
@@ -579,57 +495,7 @@ img {
     margin-right: 15px;
 }
 
-/* Magazines Section */
-.magazines {
-    background-color: var(--background-light);
-    position: relative;
-}
 
-.magazine-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
-}
-
-.magazine-card {
-    background-color: rgba(30, 30, 30, 0.7);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-}
-
-.magazine-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-}
-
-.magazine-image {
-    height: 200px;
-    background: url('/api/placeholder/350/200') center/cover no-repeat;
-}
-
-.magazine-content {
-    padding: 20px;
-}
-
-.magazine-content h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-}
-
-.magazine-content p {
-    margin-bottom: 20px;
-    color: var(--text-secondary);
-}
-
-.magazine-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-    color: var(--text-tertiary);
-}
 
 /* Features Section */
 .features {

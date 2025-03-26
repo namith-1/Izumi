@@ -6,7 +6,7 @@
     <title>Izumi Learning Platform - My Courses</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="studentdashboard.css">
-    <link rel="stylesheet" href="my courses.css">
+    <link rel="stylesheet" href="mycourses.css">
 </head>
 <body>
     <div class="dashboard">
@@ -17,7 +17,9 @@
                     <div class="logo-shape"></div>
                     <span>izumi</span>
                 </div>
-                <button class="sidebar-toggle" id="sidebarToggle">
+                <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">
+                    ☰
+                </button>                
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -69,16 +71,19 @@
                 <div class="header-right">
                     <div class="search-container">
                         <input type="text" placeholder="Search for courses, topics, or instructors...">
-                        <button class="search-btn">
-                            <i class="fas fa-search"></i>
+                        <button class="search-btn" title="Search">
+                            <i class="fa fa-search"></i>
                         </button>
+                        
+                       </button>
                     </div>
                     
                     <div class="notifications">
-                        <button class="notification-btn">
+                        <button class="notification-btn" title="View Notifications" aria-label="View Notifications">
                             <i class="fas fa-bell"></i>
                             <span class="notification-indicator"></span>
                         </button>
+                        
                     </div>
                     
                     <div class="user-profile">
@@ -128,12 +133,13 @@
                 </div>
                 
                 <div class="view-toggle">
-                    <button class="view-btn active" data-view="grid">
+                    <button class="view-btn active" data-view="grid" title="Switch to Grid View" aria-label="Switch to Grid View">
                         <i class="fas fa-th-large"></i>
                     </button>
-                    <button class="view-btn" data-view="list">
+                    <button class="view-btn" data-view="list" title="Switch to List View" aria-label="Switch to List View">
                         <i class="fas fa-list"></i>
                     </button>
+                    
                 </div>
             </section>
             
@@ -439,6 +445,6 @@
     </div>
 
     <script src="studentdashboard.js"></script>
-    <script src="my courses.js"></script>
+    <script src="mycourses.js"></script>
 </body>
 </html>
