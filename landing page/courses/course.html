@@ -1,86 +1,135 @@
-    <!-- Featured Courses Section -->
-    <section id="courses" class="featured-courses">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Courses</h2>
-                <p>Learn from industry experts and enhance your skills</p>
-            </div>
-            <div class="course-cards">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Course Carousel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="section-header">
+            <h2>Explore Courses</h2>
+            <p>Discover transformative learning experiences</p>
+        </div>
+
+        <div class="carousel-wrapper">
+            <div class="course-carousel" id="courseCarousel">
                 <div class="course-card">
-                    <div class="course-image"></div>
+                    <div class="course-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <span class="course-tag">Best Seller</span>
                     <div class="course-info">
-                        <span class="tag">Best Seller</span>
                         <h3>Advanced Web Development</h3>
-                        <p class="instructor">By Sarah Williams</p>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>4.8 (2,453 reviews)</span>
+                        <p class="instructor">Sarah Williams</p>
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <i class="fas fa-video"></i>
+                                <span>42 Lessons</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>38 Hours</span>
+                            </div>
                         </div>
-                        <div class="course-features">
-                            <span><i class="fas fa-video"></i> 42 lessons</span>
-                            <span><i class="fas fa-clock"></i> 38 hours</span>
-                        </div>
-                        <div class="course-footer">
+                        <div class="course-pricing">
                             <span class="price">$49.99</span>
-                            <button class="btn btn-sm">Enroll Now</button>
+                            <button class="enroll-btn">Enroll Now</button>
                         </div>
                     </div>
                 </div>
+
                 <div class="course-card">
-                    <div class="course-image"></div>
+                    <div class="course-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <span class="course-tag">New</span>
                     <div class="course-info">
-                        <span class="tag">New</span>
                         <h3>Data Science Fundamentals</h3>
-                        <p class="instructor">By Michael Chen</p>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span>5.0 (1,287 reviews)</span>
+                        <p class="instructor">Michael Chen</p>
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <i class="fas fa-video"></i>
+                                <span>56 Lessons</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>45 Hours</span>
+                            </div>
                         </div>
-                        <div class="course-features">
-                            <span><i class="fas fa-video"></i> 56 lessons</span>
-                            <span><i class="fas fa-clock"></i> 45 hours</span>
-                        </div>
-                        <div class="course-footer">
+                        <div class="course-pricing">
                             <span class="price">$59.99</span>
-                            <button class="btn btn-sm">Enroll Now</button>
+                            <button class="enroll-btn">Enroll Now</button>
                         </div>
                     </div>
                 </div>
+
                 <div class="course-card">
-                    <div class="course-image"></div>
+                    <div class="course-image">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <span class="course-tag">Popular</span>
                     <div class="course-info">
-                        <span class="tag">Popular</span>
                         <h3>Digital Marketing Masterclass</h3>
-                        <p class="instructor">By Emma Rodriguez</p>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <span>4.0 (3,512 reviews)</span>
+                        <p class="instructor">Emma Rodriguez</p>
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <i class="fas fa-video"></i>
+                                <span>38 Lessons</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>32 Hours</span>
+                            </div>
                         </div>
-                        <div class="course-features">
-                            <span><i class="fas fa-video"></i> 38 lessons</span>
-                            <span><i class="fas fa-clock"></i> 32 hours</span>
-                        </div>
-                        <div class="course-footer">
+                        <div class="course-pricing">
                             <span class="price">$44.99</span>
-                            <button class="btn btn-sm">Enroll Now</button>
+                            <button class="enroll-btn">Enroll Now</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="view-more-container">
-                <button class="btn btn-outline">View All Courses</button>
+
+                <div class="course-card">
+                    <div class="course-image">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <span class="course-tag">Trending</span>
+                    <div class="course-info">
+                        <h3>UX Design Principles</h3>
+                        <p class="instructor">Alex Johnson</p>
+                        <div class="course-details">
+                            <div class="detail-item">
+                                <i class="fas fa-video"></i>
+                                <span>35 Lessons</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>28 Hours</span>
+                            </div>
+                        </div>
+                        <div class="course-pricing">
+                            <span class="price">$54.99</span>
+                            <button class="enroll-btn">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+
+        <div class="carousel-controls">
+            <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
