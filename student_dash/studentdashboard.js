@@ -120,17 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Course continue buttons
-    const continueBtns = document.querySelectorAll('.continue-btn');
-    continueBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const courseTitle = this.closest('.course-card').querySelector('.course-title').textContent;
-            console.log(`Continuing course: ${courseTitle}`);
-            // In a real app, this would navigate to the course content page
-            // window.location.href = `/course/${courseId}`;
-        });
-    });
+
     
     // Badge hover interactions
     const badges = document.querySelectorAll('.badge');
@@ -169,46 +159,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+    
     }
-
-    // Calendar Date Click Event
-    if (calendarDates.length) {
-        calendarDates.forEach(date => {
-            date.addEventListener('click', function() {
-                calendarDates.forEach(d => d.classList.remove('current'));
-                this.classList.add('current');
-            });
-        });
-    }
-
-    // Magazine Read Button Event
-    if (magazineCtas.length) {
-        magazineCtas.forEach(cta => {
-            cta.addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('Opening magazine reader...');
-            });
-        });
-    }
-
-    // Game Play Button Event
-    if (gameCtas.length) {
-        gameCtas.forEach(cta => {
-            cta.addEventListener('click', function() {
-                alert('Loading game...');
-            });
-        });
-    }
-
-    // Course Card Click Event
-    if (courseCards.length) {
-        courseCards.forEach(card => {
-            card.addEventListener('click', function() {
-                alert('Opening course content...');
-            });
-        });
-    }
-
+    
     // Stat Card Click Event
     if (statCards.length) {
         statCards.forEach(card => {
@@ -483,3 +436,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call initialization functions
     initializeCharts();
 });
+
+// Function to load an HTML, CSS, and JS file dynamically
+function loadSeparatedContent(htmlFile, cssFile, jsFile, containerId) {
+    fetch(htmlFile)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(containerId).innerHTML = data;  // Insert HTML into the correct div
+
+            // Dynamically load the CSS file
+            let cssLink = document.createElement("link");
+            cssLink.rel = "stylesheet";
+            cssLink.href = cssFile;
+            document.head.appendChild(cssLink);
+
+            // Dynamically load the JS file
+            let scriptTag = document.createElement("script");
+            scriptTag.src = jsFile;
+            document.body.appendChild(scriptTag);
+        })
+        .catch(error => console.error("Error loading content:", error));
+}
+
+// Load the Course section into #course-section
+loadSeparatedContent("courses/course.html", "courses/course.css", "courses/course.js", "course");
+
+// Load the Magazine section into #magazine-section
+loadSeparatedContent("magazines/magazine.html", "magazines/magazine.css", "magazines/magazine.js", "magazine");
+
+loadSeparatedContent("dashboard/dashboard.html", "dashboard/dashboard.css", "dashboard/dashboard.js", "dashboard");
+
+loadSeparatedContent("games/game.html", "games/game.css", "games/game.js", "game");

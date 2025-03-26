@@ -1,0 +1,68 @@
+   /* Magazines Page */
+   .magazines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.magazine-card {
+    background-color: var(--background-light);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+}
+
+.magazine-card:hover {
+    transform: translateY(-5px);
+}
+
+.magazine-cover {
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+}
+
+.magazine-content {
+    padding: 20px;
+}
+
+.magazine-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.magazine-details {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.magazine-description {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.magazine-cta {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-primary);
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.magazine-cta:hover {
+    background-color: var(--primary-light);
+}
