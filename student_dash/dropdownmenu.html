@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Dropdown</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-icon {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: white;
+            min-width: 240px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform-origin: top right;
+            animation: scaleIn 0.15s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .dropdown-content.active {
+            display: block;
+        }
+
+        .menu-header {
+            padding: 12px 16px;
+            color: #666;
+            font-size: 0.9em;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-items {
+            padding: 8px 0;
+        }
+
+        .dropdown-item {
+            padding: 12px 16px;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95em;
+            transition: background 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f9fa;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            color: #666;
+        }
+
+        .logout {
+            color: #dc3545 !important;
+        }
+
+        .logout i {
+            color: inherit !important;
+        }
+
+        .divider {
+            border-top: 1px solid #eee;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-icon">S</div>
+        <div class="dropdown-content">
+            <div class="menu-header">
+                <span>English</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-items">
+                <a href="#" class="dropdown-item">
+                    <i class="fa-regular fa-user"></i>
+                    Profile
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="fa-regular fa-credit-card"></i>
+                    My Purchases
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="fa-regular fa-bell"></i>
+                    Updates
+                </a>
+                <div class="divider"></div>
+                <a href="#" class="dropdown-item">
+                    <i class="fa-regular fa-star"></i>
+                    Accomplishments
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="fa-regular fa-circle-question"></i>
+                    Help Center
+                </a>
+                <div class="divider"></div>
+                <a href="#" class="dropdown-item logout">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Log Out
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const profileContainer = document.querySelector('.profile-container');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        // Toggle dropdown
+        profileContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownContent.classList.toggle('active');
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', () => {
+            dropdownContent.classList.remove('active');
+        });
+
+        // Prevent dropdown close when clicking inside
+        dropdownContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>
